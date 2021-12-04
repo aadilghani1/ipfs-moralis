@@ -38,18 +38,20 @@ export default function Home() {
       };
       testAsync();
     }
-  }, [isInitialized, changeSwitch]);
+  }, [isInitialized, changeSwitch, isAuthenticated]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       {!user ? (
-        <>
+        <div className="flex flex-col gap-y-4">
           <button
+            className="px-3 py-2 bg-yellow-300 text-white rounded-md hover:opacity-90"
             onClick={() => authenticate({ signingMessage: "Signing in" })}
           >
             login
           </button>
           <button
+            className="px-3 py-2 bg-blue-500 text-white rounded-md hover:opacity-90"
             onClick={() =>
               authenticate({
                 provider: "walletconnect",
@@ -57,9 +59,9 @@ export default function Home() {
               })
             }
           >
-            login with wc
+            login with wallet connect
           </button>
-        </>
+        </div>
       ) : (
         <div className="flex flex-col gap-3 items-center">
           <input
